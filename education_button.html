@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<HTML>
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8">
+ <style>
+BODY {
+	margin: 20px 0px 20px 0px;
+	background-color: #878787;
+	font-family: arial;
+	font-size: 12pt;
+background: #2b2b2b;
+background: -moz-linear-gradient(top, #2b2b2b 0%, #323232 12%, #393939 25%, #282828 39%, #191919 50%, #181818 76%, #101010 91%, #0b0b0b 100%);
+background: -webkit-linear-gradient(top, #2b2b2b 0%,#323232 12%,#393939 25%,#282828 39%,#191919 50%,#181818 76%,#101010 91%,#0b0b0b 100%);
+background: linear-gradient(to bottom, #2b2b2b 0%,#323232 12%,#393939 25%,#282828 39%,#191919 50%,#181818 76%,#101010 91%,#0b0b0b 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b2b2b', endColorstr='#0b0b0b',GradientType=0 );
+	}
+	
+.page{
+	display: block;
+	width: 1000px;
+	min-height: 800px;
+	overflow: auto;
+	margin: 0px auto 0px auto;
+	box-sizing: border-box;
+	}
+	
+
+.pageNavigationBar{
+	background-color: #777777;
+	color: #000000;
+	text-align: center;
+	float: left;
+	clear: none;
+	min-height: 50px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	}
+
+.pageRightPanel{
+	background-color: #FFFFFF;
+	float: right;
+	clear: none;
+	min-height: 550px;
+	width: 200px;
+	box-sizing: border-box;
+	padding: 10px; 
+	}
+	
+.pageContent{
+	background-color: #FFFFFF;
+	color: #FFFFFF
+	float: left;
+	clear: none;
+	min-height: 550px;
+	width: 800px;
+	box-sizing: border-box;
+	padding: 10px;
+	}
+	
+.pageFooter{
+	background-color: #000000;
+	float: left;
+	clear: none;
+	min-height: 50px;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 10px;
+	}
+
+H1  {
+	color: #000000;
+	font-size: 18pt;
+	font-family: "Arial";
+	background-color: #b2b2b2;  
+	border-bottom: 2px solid #474747;  
+	border-left: 20px solid #000000;
+	padding-left: 20px;
+	}
+P {
+	font-family: "Arial";
+	color: #000000; 
+	font-size: 12pt;
+	text-align: justify;  
+	line-height: 28px;  
+	padding: 10px;
+	margin-top: 10px;
+	}
+
+
+ </style>
+ 
+ <title>CODE 1230 - Assignment 2</title>
+</head>
+<body>
+<div class="page">
+ <div class="pageHeader">
+ 
+ 
+ </div>
+ <div class="pageNavigationBar">
+   <center>
+	<A href="index.html"><IMG src="home.png" height="400" width="400"></A>
+	<A href="mining_button.html"><IMG src="mining_nsw.jpg" height="400" width="500"></A>
+	<A href="construction_button.html"><IMG src="cons_nsw.jpg" height="400" width="500"></A>
+	<A href="education_button.html"><IMG src="edu_train_nsw.jpg" height="400" width="410"></A>
+   </center>
+	
+	
+<H1>Males in Education and Training GeoJson</H1>
+
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <script src='./REDUCEDNEWEduTraiMale16.json'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamFtZXNwOTkiLCJhIjoiY2pobmd5aGJxMWdiYzNhcXdpaWVhdzhkbCJ9._o-_ysHz5HG9S49UizQiqQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [142, -30],
+    zoom: 5,
+    pitch: 40,
+    bearing: 20
+});
+map.on('load', function() {
+    map.addLayer({
+        'id': 'data',
+        'type': 'fill-extrusion',
+        'source': {
+            'type': 'geojson',
+            'data': data 
+        },
+        'paint': {
+            //'fill-color': '#088',
+            //'fill-opacity': 0.8
+            'fill-extrusion-color': {
+                'property': 'DataSEduM',
+                "stops": [
+                    [0, 'blue'],
+                    [1000, 'red']
+                ]
+            },
+            'fill-extrusion-height': {
+                'property': 'EduMExp',
+                "stops": [
+                    [0.2, 0],
+                    [1, 65535]
+                    ]
+            },            
+            'fill-extrusion-opacity': 0.9
+        }
+    });
+});
+</script>
+
+<H2>Females in Education and Training GeoJson</H2>
+
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <script src='./ReducedSelectedEduFemale.json'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiamFtZXNwOTkiLCJhIjoiY2pobmd5aGJxMWdiYzNhcXdpaWVhdzhkbCJ9._o-_ysHz5HG9S49UizQiqQ';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [142, -30],
+    zoom: 5,
+    pitch: 40,
+    bearing: 20
+});
+map.on('load', function() {
+    map.addLayer({
+        'id': 'data',
+        'type': 'fill-extrusion',
+        'source': {
+            'type': 'geojson',
+            'data': data 
+        },
+        'paint': {
+            //'fill-color': '#088',
+            //'fill-opacity': 0.8
+            'fill-extrusion-color': {
+                'property': 'DataFemE',
+                "stops": [
+                    [0, 'blue'],
+                    [1000, 'red']
+                ]
+            },
+            'fill-extrusion-height': {
+                'property': 'ExpFemaleE',
+                "stops": [
+                    [0.2, 0],
+                    [1, 65535]
+                    ]
+            },            
+            'fill-extrusion-opacity': 0.9
+        }
+    });
+});
+</script>
+
+
+
+ </div> 
+ <div class="pageContent">
+ <H3>Australian 2016 Census Analysis of Education and Training in NSW</H3>
+ <P>Story:
+	Education and training - Female
+	-	Cover’s 90% of NSW.
+	-	Huge escalations in educational and training occupations along the east coast of NSW whilst inland areas such as Wilcannia, Broken Hill, Swan 
+	Hill, Hay, Griffith, Warren, Parkes, West Wyalong is still present but not heavily. This reflects a lack of population growth compared to for 
+	example, Sydney's massive population splurge.
+	-	The space of land occupied by the this industry reflects the growth in population, both young and in job opportunity. 
+	Education - Male
+	-	Covers a small amount of NSW, primarily across the east coast, with only a few places inland.
+	-	These are: Balranald, Ivanhoe, Hay, Cobar, Boorke, West Wyalong and Brewarina.
+	-	Locations where Males work within education and training are all dominated by women when inland. It reflects that in the efforts 
+	of expanding NSW’s population out west is lead by the efforts of women in educating and training the youth and workers. 
+ </P>
+ 
+ 
+ </div>
+ 
+ </div>
+</div>
+</body>
+</html>
